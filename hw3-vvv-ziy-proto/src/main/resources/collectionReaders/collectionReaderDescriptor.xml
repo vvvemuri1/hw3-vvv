@@ -28,13 +28,13 @@
       <nameValuePair>
         <name>InputDirectory</name>
         <value>
-          <string>/Users/vvvemuri1/Masters/11791/hw3/hw3-vvv/hw3-vvv-ziy-proto/src/main/resources/inputData</string>
+          <string>/Users/vvvemuri1/git/hw3-vvv/hw3-vvv-ziy-proto/src/main/resources/inputData</string>
         </value>
       </nameValuePair>
-    <nameValuePair>
+      <nameValuePair>
         <name>OutputDirectory</name>
         <value>
-          <string>/Users/vvvemuri1/Masters/11791/hw3/hw3-vvv/hw3-vvv-ziy-proto/src/main/resources/outputData</string>
+          <string>/Users/vvvemuri1/git/hw3-vvv/hw3-vvv-ziy-proto/src/main/resources/outputData</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

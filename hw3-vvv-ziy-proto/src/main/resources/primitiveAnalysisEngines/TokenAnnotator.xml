@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>edu.cmu.deiis.casConsumers.EvaluationCasConsumer</implementationName>
-  <processingResourceMetaData>
-    <name>EvaluationConsumer</name>
+  <primitive>true</primitive>  <annotatorImplementationName>edu.cmu.deiis.annotators.TokenAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>TokenAnnotator</name>
     <description/>
     <version>1.0</version>
     <vendor/>
@@ -12,7 +12,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="/Users/vvvemuri1/git/hw3-vvv/hw3-vvv-ziy-proto/src/main/resources/descriptors/deiis_types.xml"/>
+        <import name="descriptors.deiis_types"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
@@ -25,10 +25,10 @@
       </capability>
     </capabilities>
   <operationalProperties>
-      <modifiesCas>false</modifiesCas>
-      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
-  </processingResourceMetaData>
+  </analysisEngineMetaData>
   <resourceManagerConfiguration/>
-</casConsumerDescription>
+</analysisEngineDescription>
