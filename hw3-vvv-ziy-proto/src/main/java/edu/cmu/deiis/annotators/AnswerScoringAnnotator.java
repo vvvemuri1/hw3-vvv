@@ -6,6 +6,7 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
+import org.cleartk.ne.type.NamedEntity;
 
 import edu.cmu.deiis.types.Answer;
 import edu.cmu.deiis.types.AnswerScore;
@@ -54,6 +55,21 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
       }
       
       answerScore.addToIndexes();
+    }
+
+    /** 
+     * Compare accuracy and speed of Stanford CoreNLP 
+     * service with our pipeline from Homework 2 
+     */
+    FSIndex namedEntityIndex = jcas.getAnnotationIndex(NamedEntity.type);
+    Iterator namedEntityIter = namedEntityIndex.iterator();
+
+    while (namedEntityIter.hasNext())
+    {
+    	NamedEntity entity = (NamedEntity) namedEntityIter.next();
+    	System.out.println("Entity Class = " + entity.getEntityClass());
+    	System.out.println("Entity Subtype = " + entity.getEntitySubtype());
+    	System.out.println("Entity ID = " + entity.getEntityId());
     }
   }
 }

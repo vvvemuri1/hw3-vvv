@@ -19,6 +19,9 @@
     <delegateAnalysisEngine key="EvaluationAnnotator">
       <import name="primitiveAnalysisEngines.EvaluationAnnotator"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="scnlp-vvv-client">
+      <import name="scnlp-vvv-client"/>
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>hw2-vvv-aae</name>
@@ -32,8 +35,9 @@
         <node>TestElementAnnotator</node>
       <node>TokenAnnotator</node>
         <node>NGramAnnotator</node>
+        <node>scnlp-vvv-client</node>
         <node>AnswerScoringAnnotator</node>
-        <node>EvaluationAnnotator</node>
+      <node>EvaluationAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
