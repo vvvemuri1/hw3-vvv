@@ -31,3 +31,135 @@
 10/5/13 5:21:40 PM - 11: org.apache.uima.aae.controller.PrimitiveAnalysisEngineController_impl.postInitialize: INFO: ********* Initialized the Controller. hw2-vvv-aae Ready To Process. ********
 10/5/13 5:21:40 PM - 10: org.apache.uima.adapter.jms.activemq.SpringContainerDeployer.doStartListeners: INFO: Controller: hw2-vvv-aae Starting Listener on Endpoint: queue://vvvQueue Selector: Command=2000 OR Command=2002 Broker: tcp://localhost:61616
 10/5/13 5:21:40 PM - 10: org.apache.uima.adapter.jms.activemq.SpringContainerDeployer.doStartListeners: INFO: Controller: hw2-vvv-aae Starting Listener on Endpoint: queue://vvvQueue Selector: Command=2001 Broker: tcp://localhost:61616
+10/5/13 5:38:54 PM - 12: org.apache.uima.adapter.jms.client.ActiveMQMessageSender.reject: INFO: UIMA AS Client Message Dispatcher Rejecting Process Request - the Broker Is Not Available.
+10/5/13 5:38:54 PM - 12: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.handleException: INFO: Received Exception In Message From Service on Queue:UimaASClient Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:org.apache.uima.jms.error.handler.BrokerConnectionException: Unable To Deliver Message To Destination. Connection To Broker tcp://mu.lti.cs.cmu.edu:61616 Has Been Lost
+10/5/13 5:38:54 PM - 11: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS: INFO: UIMA AS Handling Exception in sendAndReceive(). CAS hashcode:1227346270. ThreadMonitor Released Semaphore For Thread ID:15
+10/5/13 5:38:54 PM - 12: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl$SharedConnection.retryConnectionUntilSuccessfull: WARNING: UIMA AS Client Has Lost Connection To Broker:tcp://mu.lti.cs.cmu.edu:61616 Retrying Connection every 5secs until successful. Is Client Stopped:
+10/5/13 5:38:54 PM - 11: org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(140): SEVERE: Exception occurred
+org.apache.uima.resource.ResourceServiceException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:191)
+	at org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(AnalysisEngineServiceAdapter.java:129)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.processUntilNextOutputCas(ASB_impl.java:567)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.<init>(ASB_impl.java:409)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl.process(ASB_impl.java:342)
+	at org.apache.uima.analysis_engine.impl.AggregateAnalysisEngine_impl.processAndOutputNewCASes(AggregateAnalysisEngine_impl.java:267)
+	at org.apache.uima.aae.controller.PrimitiveAnalysisEngineController_impl.process(PrimitiveAnalysisEngineController_impl.java:584)
+	at org.apache.uima.aae.handler.HandlerBase.invokeProcess(HandlerBase.java:121)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handleProcessRequestFromRemoteClient(ProcessRequestHandler_impl.java:510)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handle(ProcessRequestHandler_impl.java:1008)
+	at org.apache.uima.aae.handler.input.MetadataRequestHandler_impl.handle(MetadataRequestHandler_impl.java:78)
+	at org.apache.uima.adapter.jms.activemq.JmsInputChannel.onMessage(JmsInputChannel.java:702)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:535)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:495)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:467)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:323)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:261)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1056)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:952)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	at org.apache.uima.aae.UimaAsThreadFactory$1.run(UimaAsThreadFactory.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+Caused by: org.apache.uima.resource.ResourceProcessException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:2139)
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:1952)
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:183)
+	... 22 more
+Caused by: org.apache.uima.jms.error.handler.BrokerConnectionException: Unable To Deliver Message To Destination. Connection To Broker tcp://mu.lti.cs.cmu.edu:61616 Has Been Lost
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.reject(BaseMessageSender.java:139)
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.run(BaseMessageSender.java:269)
+	... 1 more
+
+10/5/13 5:38:54 PM - 11: org.apache.uima.analysis_engine.impl.AggregateAnalysisEngine_impl.processAndOutputNewCASes(275): SEVERE: Exception occurred
+org.apache.uima.analysis_engine.AnalysisEngineProcessException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(AnalysisEngineServiceAdapter.java:142)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.processUntilNextOutputCas(ASB_impl.java:567)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.<init>(ASB_impl.java:409)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl.process(ASB_impl.java:342)
+	at org.apache.uima.analysis_engine.impl.AggregateAnalysisEngine_impl.processAndOutputNewCASes(AggregateAnalysisEngine_impl.java:267)
+	at org.apache.uima.aae.controller.PrimitiveAnalysisEngineController_impl.process(PrimitiveAnalysisEngineController_impl.java:584)
+	at org.apache.uima.aae.handler.HandlerBase.invokeProcess(HandlerBase.java:121)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handleProcessRequestFromRemoteClient(ProcessRequestHandler_impl.java:510)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handle(ProcessRequestHandler_impl.java:1008)
+	at org.apache.uima.aae.handler.input.MetadataRequestHandler_impl.handle(MetadataRequestHandler_impl.java:78)
+	at org.apache.uima.adapter.jms.activemq.JmsInputChannel.onMessage(JmsInputChannel.java:702)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:535)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:495)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:467)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:323)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:261)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1056)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:952)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	at org.apache.uima.aae.UimaAsThreadFactory$1.run(UimaAsThreadFactory.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+Caused by: org.apache.uima.resource.ResourceServiceException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:191)
+	at org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(AnalysisEngineServiceAdapter.java:129)
+	... 21 more
+Caused by: org.apache.uima.resource.ResourceProcessException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:2139)
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:1952)
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:183)
+	... 22 more
+Caused by: org.apache.uima.jms.error.handler.BrokerConnectionException: Unable To Deliver Message To Destination. Connection To Broker tcp://mu.lti.cs.cmu.edu:61616 Has Been Lost
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.reject(BaseMessageSender.java:139)
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.run(BaseMessageSender.java:269)
+	... 1 more
+
+10/5/13 5:38:54 PM - 11: org.apache.uima.aae.error.handler.ProcessCasErrorHandler.handleError: WARNING: Service: hw2-vvv-aae Runtime Exception  
+10/5/13 5:38:54 PM - 11: org.apache.uima.aae.error.handler.ProcessCasErrorHandler.handleError: WARNING: 
+org.apache.uima.analysis_engine.AnalysisEngineProcessException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(AnalysisEngineServiceAdapter.java:142)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.processUntilNextOutputCas(ASB_impl.java:567)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl$AggregateCasIterator.<init>(ASB_impl.java:409)
+	at org.apache.uima.analysis_engine.asb.impl.ASB_impl.process(ASB_impl.java:342)
+	at org.apache.uima.analysis_engine.impl.AggregateAnalysisEngine_impl.processAndOutputNewCASes(AggregateAnalysisEngine_impl.java:267)
+	at org.apache.uima.aae.controller.PrimitiveAnalysisEngineController_impl.process(PrimitiveAnalysisEngineController_impl.java:584)
+	at org.apache.uima.aae.handler.HandlerBase.invokeProcess(HandlerBase.java:121)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handleProcessRequestFromRemoteClient(ProcessRequestHandler_impl.java:510)
+	at org.apache.uima.aae.handler.input.ProcessRequestHandler_impl.handle(ProcessRequestHandler_impl.java:1008)
+	at org.apache.uima.aae.handler.input.MetadataRequestHandler_impl.handle(MetadataRequestHandler_impl.java:78)
+	at org.apache.uima.adapter.jms.activemq.JmsInputChannel.onMessage(JmsInputChannel.java:702)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:535)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:495)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:467)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:323)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:261)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1056)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:952)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	at org.apache.uima.aae.UimaAsThreadFactory$1.run(UimaAsThreadFactory.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+Caused by: org.apache.uima.resource.ResourceServiceException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:191)
+	at org.apache.uima.analysis_engine.service.impl.AnalysisEngineServiceAdapter.processAndOutputNewCASes(AnalysisEngineServiceAdapter.java:129)
+	... 21 more
+Caused by: org.apache.uima.resource.ResourceProcessException: Received Exception In Message From Service on Queue:ScnlpQueue Broker: tcp://mu.lti.cs.cmu.edu:61616 Cas Identifier:72a93b06:1418a7f485a:-7feb Exception:{3}
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:2139)
+	at org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendAndReceiveCAS(BaseUIMAAsynchronousEngineCommon_impl.java:1952)
+	at org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceStub.callProcess(JmsAnalysisEngineServiceStub.java:183)
+	... 22 more
+Caused by: org.apache.uima.jms.error.handler.BrokerConnectionException: Unable To Deliver Message To Destination. Connection To Broker tcp://mu.lti.cs.cmu.edu:61616 Has Been Lost
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.reject(BaseMessageSender.java:139)
+	at org.apache.uima.adapter.jms.client.BaseMessageSender.run(BaseMessageSender.java:269)
+	... 1 more
+
+10/5/13 5:38:54 PM - 12: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngine_impl.initializeConsumer: INFO: Initializing JMS Message Consumer. Broker: tcp://mu.lti.cs.cmu.edu:61616 Queue Name: ID:cmu-866055.wv.cc.cmu.edu-59499-1381008099850-0:4:1
+10/5/13 5:38:54 PM - 12: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl$SharedConnection.retryConnectionUntilSuccessfull: INFO: UIMA AS Client Recovered Connection to Broker: tcp://mu.lti.cs.cmu.edu:61616 
+10/5/13 5:39:09 PM - 11: org.apache.uima.adapter.jms.client.ClientServiceDelegate.addCasToPendingDispatchList: WARNING: Controller: UimaASClient Added CAS 72a93b06:1418a7f485a:-7fea (Hashcode: 1227346270) To a List Of CASes Pending Dispatch. The Controller Has Previously Timed-out Waiting For a Reply From ScnlpQueue Service. The Submitted CAS Will Remain in Pending Dispatch List Until GetMeta Ping Succeeds or GetMet Ping Times out. List Size Before Add: 0
+10/5/13 5:39:09 PM - 11: org.apache.uima.adapter.jms.client.ClientServiceDelegate.dumpDelayedList: INFO: Current Pending Dispatch List. Delegate:ScnlpQueue
+	----- CAS:72a93b06:1418a7f485a:-7fea CAS hashCode:1227346270
+
+10/5/13 5:39:09 PM - 12: org.apache.uima.adapter.jms.client.ActiveMQMessageSender.run: INFO: UIMA AS Client Message Dispatcher Sending GetMeta Ping To the Service
+10/5/13 5:39:09 PM - 11: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.sendCAS: INFO: Uima AS Client Sent PING Message To Service: ScnlpQueue
+10/5/13 5:39:09 PM - 13: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.handleMetadataReply: INFO: UIMA AS Client Received GetMeta Ping Reply from Service:ScnlpQueue on host: 128.2.220.69
+10/5/13 5:39:09 PM - 13: org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngineCommon_impl.handleMetadataReply: INFO: UIMA AS Dispatching CAS: 72a93b06:1418a7f485a:-7fea (Hashcode:1227346270) from Delayed List 
+10/5/13 5:52:08 PM - 11: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.onException: WARNING: Service: hw2-vvv-aae Runtime Exception  
+10/5/13 5:52:08 PM - 11: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.onException: WARNING: Jms Listener Failed. Endpoint: vvvQueue Managed By: tcp://localhost:61616 Reason: javax.jms.JMSException: java.io.EOFException
+10/5/13 5:52:08 PM - 11: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.handleListenerSetupFailure: WARNING: Uima AS Service:hw2-vvv-aae Listener Unable To Connect To Broker: tcp://localhost:61616 Retrying ...  
+10/5/13 5:52:08 PM - 14: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.onException: WARNING: Service: hw2-vvv-aae Runtime Exception  
+10/5/13 5:52:08 PM - 14: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.onException: WARNING: Jms Listener Failed. Endpoint: vvvQueue Managed By: tcp://localhost:61616 Reason: javax.jms.JMSException: java.io.EOFException
+10/5/13 5:52:08 PM - 14: org.apache.uima.adapter.jms.activemq.UimaDefaultMessageListenerContainer.handleListenerSetupFailure: WARNING: Uima AS Service:hw2-vvv-aae Listener Unable To Connect To Broker: tcp://localhost:61616 Retrying ...  
