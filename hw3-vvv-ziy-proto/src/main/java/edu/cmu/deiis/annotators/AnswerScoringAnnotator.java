@@ -43,7 +43,7 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
       /**
        * Using Standord NLP NamedEntity annotations to compute score.
        */
-      JFSIndexRepository repository = jcas.getJFSIndexRepository();
+      /*JFSIndexRepository repository = jcas.getJFSIndexRepository();
       FSIterator iter = repository.getAllIndexedFS(NamedEntity.type);
 
       double total = 0;
@@ -58,7 +58,7 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
       }
       
       answerScore.setScore(total/numTokens);
-      answerScore.addToIndexes();
+      answerScore.addToIndexes();*/
     }    
   }
 }
