@@ -1,13 +1,14 @@
 package edu.cmu.deiis.annotators;
 
 import java.util.Iterator;
-
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
+import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.JFSIndexRepository;
+import org.cleartk.ne.type.NamedEntity;
 import org.cleartk.token.type.Token;
-
 import edu.cmu.deiis.types.Answer;
 import edu.cmu.deiis.types.AnswerScore;
 
@@ -40,19 +41,19 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
       answerScore.setAnswer(answer);
       
       /**
-       * Using Standord NLP to compute score by averaging
-       * score across tokens.
+       * Using Standord NLP NamedEntity annotations to compute score.
        */
-      FSIndex tokenIndex = jcas.getAnnotationIndex(Token.type);
-      Iterator tokenIter = tokenIndex.iterator();
+      JFSIndexRepository repository = jcas.getJFSIndexRepository();
+      FSIterator iter = repository.getAllIndexedFS(NamedEntity.type);
 
       double total = 0;
       int numTokens = 0;
       
-      while (tokenIter.hasNext())
+      while (iter.hasNext())
       {
-      	Token token = (Token) tokenIter.next();
-      	total += token.getScore();
+    	NamedEntity namedEntity = (NamedEntity) iter.next();
+      	total += namedEntity.getScore();
+      	System.out.println(total);
       	numTokens++;
       }
       
