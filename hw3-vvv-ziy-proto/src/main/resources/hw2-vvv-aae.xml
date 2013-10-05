@@ -32,12 +32,12 @@
     <configurationParameterSettings/>
     <flowConstraints>
       <fixedFlow>
-        <node>TestElementAnnotator</node>
-      <node>TokenAnnotator</node>
+        <node>scnlp-vvv-client</node>
+      <node>TestElementAnnotator</node>
+        <node>TokenAnnotator</node>
         <node>NGramAnnotator</node>
         <node>AnswerScoringAnnotator</node>
-        <node>EvaluationAnnotator</node>
-      <node>scnlp-vvv-client</node>
+      <node>EvaluationAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
