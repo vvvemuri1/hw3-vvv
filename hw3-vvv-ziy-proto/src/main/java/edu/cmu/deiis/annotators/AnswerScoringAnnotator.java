@@ -7,7 +7,6 @@ import org.apache.uima.cas.FSIndex;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
-import org.cleartk.ne.type.NamedEntity;
 import org.cleartk.token.type.Token;
 import edu.cmu.deiis.types.Answer;
 import edu.cmu.deiis.types.AnswerScore;
@@ -44,17 +43,14 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
        * Using Standord NLP NamedEntity annotations to compute score.
        */
       JFSIndexRepository repository = jcas.getJFSIndexRepository();
-      FSIterator iter = repository.getAllIndexedFS(NamedEntity.type);
+      FSIterator iter = repository.getAllIndexedFS(Token.type);
 
       double total = 0;
       int numTokens = 0;
       
       while (iter.hasNext())
       {
-    	NamedEntity namedEntity = (NamedEntity) iter.next();
-      	total += namedEntity.getScore();
-      	System.out.println(total);
-      	numTokens++;
+    	Token token = (Token) iter.next();
       }
       
       answerScore.setScore(total/numTokens);
