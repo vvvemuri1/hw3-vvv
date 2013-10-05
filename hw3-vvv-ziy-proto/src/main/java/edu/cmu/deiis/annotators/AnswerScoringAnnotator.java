@@ -6,7 +6,7 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
-import org.cleartk.ne.type.NamedEntity;
+import org.cleartk.token.type.Token;
 
 import edu.cmu.deiis.types.Answer;
 import edu.cmu.deiis.types.AnswerScore;
@@ -19,12 +19,6 @@ import edu.cmu.deiis.types.AnswerScore;
  */
 public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase 
 {
-  /** Score assigned to a correct answer under Gold Standard scoring system**/
-  private static final float GOLD_STANDARD_INCORRECT = 0f;
-  
-  /** Score assigned to an incorrect answer under Gold Standard scoring system**/
-  private static final float GOLD_STANDARD_CORRECT = 1f;
-
   /**
    * Assigns a score to each answer.
    * @param jcas JCas object that provides access to the CAS.
@@ -45,31 +39,25 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
       answerScore.setEnd(answer.getEnd());
       answerScore.setAnswer(answer);
       
-      if (answer.getIsCorrect())
+      /**
+       * Using Standord NLP to compute score by averaging
+       * score across tokens.
+       */
+      FSIndex tokenIndex = jcas.getAnnotationIndex(Token.type);
+      Iterator tokenIter = tokenIndex.iterator();
+
+      double total = 0;
+      int numTokens = 0;
+      
+      while (tokenIter.hasNext())
       {
-        answerScore.setScore(GOLD_STANDARD_CORRECT);
-      }
-      else
-      {
-        answerScore.setScore(GOLD_STANDARD_INCORRECT);
+      	Token token = (Token) tokenIter.next();
+      	total += token.getScore();
+      	numTokens++;
       }
       
+      answerScore.setScore(total/numTokens);
       answerScore.addToIndexes();
-    }
-
-    /** 
-     * Compare accuracy and speed of Stanford CoreNLP 
-     * service with our pipeline from Homework 2 
-     */
-    FSIndex namedEntityIndex = jcas.getAnnotationIndex(NamedEntity.type);
-    Iterator namedEntityIter = namedEntityIndex.iterator();
-
-    while (namedEntityIter.hasNext())
-    {
-    	NamedEntity entity = (NamedEntity) namedEntityIter.next();
-    	System.out.println("Entity Class = " + entity.getEntityClass());
-    	System.out.println("Entity Subtype = " + entity.getEntitySubtype());
-    	System.out.println("Entity ID = " + entity.getEntityId());
-    }
+    }    
   }
 }
