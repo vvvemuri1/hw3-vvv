@@ -12,9 +12,6 @@
             <descriptor>
                 <import location="hw2-vvv-aae.xml"/>
             </descriptor>
-            <descriptor>
-                <import location="hw2-vvv-aae-client.xml"/>
-            </descriptor>
             <deploymentParameters/>
             <errorHandling>
                 <errorRateThreshold action="terminate" value="0/1000"/>

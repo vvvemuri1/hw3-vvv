@@ -49,6 +49,8 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase
         annotation.setText(tokenString);
         annotation.addToIndexes();
         begin = end + 1;
+        
+        
       }
     }
   }
