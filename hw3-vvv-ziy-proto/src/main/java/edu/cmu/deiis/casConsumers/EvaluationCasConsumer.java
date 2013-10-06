@@ -22,7 +22,6 @@ public class EvaluationCasConsumer extends CasConsumer_ImplBase implements
 		CasConsumer {
 	/**
 	 * Prints the sorted answers and the precision value.
-	 * 
 	 * @param @Cas CAS Object whose data will be output to the console.
 	 */
 	@Override
