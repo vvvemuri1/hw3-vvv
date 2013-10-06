@@ -94,11 +94,11 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
 			question.add(token.getCoveredText());
 			questionPOS.add(token.getPos());
 		}    
-		
-	    // Determine question and answer scores
-	    determineScores(question, answerList, answersScores);        
 	  }	  
-	  
+
+	  // Determine question and answer scores
+	  determineScores(question, answerList, answersScores);        
+
 	  matchAnswerToAnswerScore(answers, tokenBegins, answersScores);
   }
   
@@ -112,9 +112,10 @@ public class AnswerScoringAnnotator extends JCasAnnotator_ImplBase
 			ArrayList<ArrayList<String>> answerList,
 			ArrayList<AnswerScore> answersScores) 
 	{
+		System.out.println("Size = " + answerList.size());
 		for (int i = 0; i < answerList.size(); i++)
 		{
-		    ArrayList<Boolean> alreadySeenToken = new ArrayList<Boolean>(answerList.get(i).size());
+		  ArrayList<Boolean> alreadySeenToken = new ArrayList<Boolean>(answerList.get(i).size());
 		  for (int k = 0; k < answerList.get(i).size(); k++)
 		  {
 			  alreadySeenToken.add(false);
